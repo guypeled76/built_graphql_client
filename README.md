@@ -1,22 +1,31 @@
-A library for Dart developers.
+# built_graphql_client.dart
 
-Created from templates made available by Stagehand under a BSD-style
-[license](https://github.com/dart-lang/stagehand/blob/master/LICENSE).
+![todo reporter](./art/built_graphql_client.png)
 
-## Usage
+Tool that generates a report with all the TODO annotations found in your Dart code.
 
-A simple usage example:
+## License
 
-```dart
-import 'package:built_graphql_client/built_graphql_client.dart';
-
-main() {
-  var awesome = new Awesome();
-}
 ```
+MIT License
 
-## Features and bugs
+Copyright (c) 2019 Jorge Coca
 
-Please file feature requests and bugs at the [issue tracker][tracker].
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
 
-[tracker]: http://example.com/issues/replaceme
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+```

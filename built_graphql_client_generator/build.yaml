@@ -1,0 +1,15 @@
+targets:
+  $default:
+    builders:
+      built_graphql_client_generator|built_graphql_client:
+        enabled: true
+
+builders:
+  built_graphql_client:
+    target: ":built_graphql_client_generator"
+    import: "package:built_graphql_client_generator/builder.dart"
+    builder_factories: ["graphqlBuilderFactory"]
+    build_extensions: {".dart": [".built_graphql_client.g.part"]}
+    auto_apply: dependents
+    build_to: cache
+    applies_builders: ["source_gen|combining_builder"]
