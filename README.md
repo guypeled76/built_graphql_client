@@ -1,15 +1,12 @@
-# built_graphql_client.dart
+# built_graphql_client
 
-![todo reporter](./art/built_graphql_client.png)
-
-Tool that generates a report with all the TODO annotations found in your Dart code.
-
+Provides a simple generated visitor pattern based solution for creating a graphql client.
 ## License
 
 ```
 MIT License
 
-Copyright (c) 2019 Jorge Coca
+Copyright (c) 2019 Guy Peled
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
