@@ -9,6 +9,7 @@ environment:
 
 dependencies:
   build: '>=0.12.0 <2.0.0'
+  petitparser: ^2.4.0
   source_gen: ^0.9.0
   built_graphql_client:
     path: ../built_graphql_client/
