@@ -16,7 +16,7 @@ class GrammarTransformer {
     if(value is ValueType) {
       return value;
     }
-    if(value is ValueNode<ValueType>){
+    if(value is PrimitiveNode<ValueType>){
       return value.value;
     }
     if(value is List) {

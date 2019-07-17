@@ -1,3 +1,4 @@
+import 'package:built_graphql_client_generator/src/ast/primitive.dart';
 import 'package:built_graphql_client_generator/src/ast/argument.dart';
 import 'package:built_graphql_client_generator/src/ast/compilationUnit.dart';
 import 'package:built_graphql_client_generator/src/ast/container.dart';
@@ -6,7 +7,8 @@ import 'package:built_graphql_client_generator/src/ast/field.dart';
 import 'package:built_graphql_client_generator/src/ast/name.dart';
 import 'package:built_graphql_client_generator/src/ast/named.dart';
 import 'package:built_graphql_client_generator/src/ast/operation.dart';
-import 'package:built_graphql_client_generator/src/ast/value.dart';
+import 'package:built_graphql_client_generator/src/ast/expression.dart';
+import 'package:built_graphql_client_generator/src/ast/variable.dart';
 import 'package:built_graphql_client_generator/src/ast/visitors/printer.dart';
 
 abstract class AstNode {
@@ -47,11 +49,19 @@ class AstVisitor<ResultType, ContextType> {
     return null;
   }
 
-  ResultType visitValueNode(ValueNode valueNode, context) {
+  ResultType visitExpressionNode(ExpressionNode valueNode, context) {
     return null;
   }
 
   ResultType visitOperationNode(OperationNode operationNode, context) {
+    return null;
+  }
+
+  ResultType visitVariableNode(VariableNode variableNode, context) {
+    return null;
+  }
+
+  ResultType visitPrimitiveNode(PrimitiveNode primitiveNode, context) {
     return null;
   }
 

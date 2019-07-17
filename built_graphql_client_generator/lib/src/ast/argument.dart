@@ -3,12 +3,12 @@
 import 'package:built_graphql_client_generator/src/ast/node.dart';
 
 import 'named.dart';
-import 'value.dart';
+import 'expression.dart';
 
-class ArgumentNode extends NamedNode implements ValueNode {
+class ArgumentNode extends NamedNode implements ExpressionNode {
 
 
-  final Object value;
+  final ExpressionNode value;
 
   ArgumentNode(name, this.value) : super(name);
 

@@ -1,5 +1,7 @@
 
 
+import 'package:built_graphql_client_generator/src/ast/primitive.dart';
+
 import '../index.dart';
 
 class Printer<Context extends PrinterContext> implements AstVisitor<String,Context> {
@@ -40,8 +42,20 @@ class Printer<Context extends PrinterContext> implements AstVisitor<String,Conte
   }
 
   @override
-  String visitValueNode(ValueNode valueNode, context) {
+  String visitExpressionNode(ExpressionNode valueNode, context) {
     // TODO: implement visitValueNode
+    return null;
+  }
+
+  @override
+  String visitVariableNode(VariableNode variableNode, context) {
+    // TODO: implement visitVariableNode
+    return null;
+  }
+
+  @override
+  String visitPrimitiveNode(PrimitiveNode primitiveNode, context) {
+    // TODO: implement visitPrimitiveNode
     return null;
   }
 

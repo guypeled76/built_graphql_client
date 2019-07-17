@@ -15,7 +15,11 @@ class GraphQLParserDefinition extends GraphQLGrammarDefinition with GrammarTrans
 
   @override
   Parser start() {
-    return super.start().map((value) => CompilationUnit(as_list(value)));
+    return super.start().map((value) =>
+        CompilationUnit(
+          as_list(value)
+        )
+    );
   }
 
   Parser operation() {
@@ -23,33 +27,53 @@ class GraphQLParserDefinition extends GraphQLGrammarDefinition with GrammarTrans
         OperationNode(
             as_name(value),
             as_value(value, OperationType.Query),
-            as_list(value)));
+            as_list(value)
+        )
+    );
   }
 
   Parser operationType() {
     return super.operationType().map((value) {
       switch(value) {
         case 'mutation':
-          return ValueNode(OperationType.Mutation);
+          return PrimitiveNode(OperationType.Mutation);
         case 'query':
         default:
-          return ValueNode(OperationType.Query);
+          return PrimitiveNode(OperationType.Query);
       }
 
     });
   }
 
   Parser NAME() {
-    return super.NAME().trim().map((value)=>NameNode(value));
+    return super.NAME().trim().map(
+            (value)=>NameNode(value)
+    );
   }
 
 
   Parser field() {
-    return super.field().map((value)=>FieldNode(as_name(value), as_list(value), as_list(value), as_list(value)));
+    return super.field().map((value) =>
+        FieldNode(
+            as_name(value),
+            as_list(value),
+            as_list(value),
+            as_list(value)
+        )
+    );
   }
 
   Parser fieldName() {
     return ref(alias) | ref(NAME);
+  }
+
+  Parser argument() {
+    return super.argument().map((value) =>
+        ArgumentNode(
+          as_name(value),
+          as_value(value)
+        )
+    );
   }
 
 }
