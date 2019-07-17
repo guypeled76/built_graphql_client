@@ -1,9 +1,4 @@
-
-
-import 'package:built_graphql_client_generator/src/ast/node.dart';
-
-import 'container.dart';
-import 'operation.dart';
+import 'index.dart';
 
 class CompilationUnit extends ContainerNode {
 

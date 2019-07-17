@@ -11,3 +11,5 @@ export 'variable.dart';
 export 'name.dart';
 export 'argument.dart';
 export 'primitive.dart';
+export 'visitor.dart';
+export 'printer.dart';

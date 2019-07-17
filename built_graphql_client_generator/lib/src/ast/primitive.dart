@@ -1,7 +1,7 @@
 
 
-import 'expression.dart';
-import 'node.dart';
+import 'index.dart';
+
 
 class PrimitiveNode<PrimitiveType> extends AstNode implements ExpressionNode {
   final PrimitiveType value;
@@ -12,5 +12,10 @@ class PrimitiveNode<PrimitiveType> extends AstNode implements ExpressionNode {
   @override
   ResultType visit<ResultType, ContextType>(AstVisitor<ResultType, ContextType> visitor, ContextType context) {
     return visitor.visitPrimitiveNode(this, context);
+  }
+
+  @override
+  String toString() {
+    return value?.toString() ?? "null";
   }
 }

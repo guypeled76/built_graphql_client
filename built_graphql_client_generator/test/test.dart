@@ -1,5 +1,6 @@
 import 'package:built_graphql_client_generator/src/ast/index.dart';
 import 'package:built_graphql_client_generator/src/praser/graphql.dart';
+import 'package:built_graphql_client_generator/src/printers/graphql.dart';
 import 'package:test/test.dart';
 
 void main() {
@@ -50,7 +51,10 @@ void main() {
 
   var value = test1.value;
   if(value is AstNode) {
-    print("result: ${value.toString()}");
+
+    var printer = GraphQLPrinter();
+    value.print(printer, null);
+    print("result: ${printer.toString()}");
   }
 
 

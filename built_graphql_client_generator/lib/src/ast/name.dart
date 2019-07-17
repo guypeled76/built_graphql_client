@@ -1,8 +1,8 @@
 
 
-import 'package:built_graphql_client_generator/src/ast/node.dart';
+import 'index.dart';
 
-import 'node.dart';
+
 
 class NameNode extends AstNode {
   final String name;

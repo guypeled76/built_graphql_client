@@ -41,7 +41,6 @@ class GraphQLParserDefinition extends GraphQLGrammarDefinition with GrammarTrans
         default:
           return PrimitiveNode(OperationType.Query);
       }
-
     });
   }
 

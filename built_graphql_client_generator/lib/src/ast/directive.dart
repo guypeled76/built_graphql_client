@@ -1,11 +1,4 @@
-
-
-
-
-import 'argument.dart';
-import 'container.dart';
-import 'named.dart';
-import 'node.dart';
+import 'index.dart';
 
 class DirectiveNode extends NamedNode implements ContainerNode {
 
