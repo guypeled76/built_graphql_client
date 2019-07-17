@@ -1,6 +1,19 @@
 import 'package:petitparser/petitparser.dart';
 
-import 'base.dart';
+import 'package:built_graphql_client_generator/src/grammer/base.dart';
+
+class PrometheusProcessor extends GrammarParser {
+  PrometheusProcessor() : super(const PrometheusProcessorDefinition());
+}
+
+class PrometheusProcessorDefinition extends PrometheusGrammarDefinition {
+  const PrometheusProcessorDefinition();
+
+  @override
+  Parser start() {
+    return super.start().flatten();
+  }
+}
 
 class PrometheusGrammar extends GrammarParser {
   PrometheusGrammar() : super(const PrometheusGrammarDefinition());
