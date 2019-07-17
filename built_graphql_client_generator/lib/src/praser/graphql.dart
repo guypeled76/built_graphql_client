@@ -45,12 +45,6 @@ class GraphQLParserDefinition extends GraphQLGrammarDefinition with GrammarTrans
     });
   }
 
-  Parser NAME() {
-    return super.NAME().trim().map(
-            (value)=>NameNode(value)
-    );
-  }
-
 
   Parser field() {
     return super.field().map((value) =>
@@ -73,6 +67,35 @@ class GraphQLParserDefinition extends GraphQLGrammarDefinition with GrammarTrans
           as_name(value),
           as_value(value)
         )
+    );
+  }
+
+
+  Parser NAME() {
+    return super.NAME().trim().map(
+            (value)=>NameNode(value)
+    );
+  }
+
+  Parser NUMBER() {
+    return super.NUMBER().trim().flatten().map((value) =>
+        PrimitiveNode(
+            int.parse(value)
+        )
+    );
+  }
+
+  Parser STRING() {
+    return super.STRING().trim().flatten().map((value) =>
+        PrimitiveNode(
+            value
+        )
+    );
+  }
+
+  Parser BOOLEAN() {
+    return super.STRING().trim().flatten().map((value) =>
+      value == "true" ? true : false
     );
   }
 
