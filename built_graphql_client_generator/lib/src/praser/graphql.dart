@@ -2,58 +2,38 @@
 
 import 'package:built_graphql_client_generator/src/ast/index.dart';
 import 'package:built_graphql_client_generator/src/grammer/graphql.dart';
-import 'package:built_graphql_client_generator/src/grammer/transformer.dart';
+import 'package:built_graphql_client_generator/src/praser/transformer.dart';
 import 'package:petitparser/petitparser.dart';
+
 
 class GraphQLParser extends GrammarParser  {
   GraphQLParser() : super(const GraphQLParserDefinition());
 }
 
-class GraphQLParserDefinition extends GraphQLGrammarDefinition with GrammarTransformer {
+class GraphQLParserDefinition extends GraphQLGrammarDefinition with ParserTransformer {
   const GraphQLParserDefinition();
 
 
   @override
   Parser start() {
-    return super.start().map((value) =>
-        CompilationUnit(
-          as_list(value)
-        )
-    );
+    return as_compilationNode(super.start());
   }
 
   Parser operation() {
-    return super.operation().map((value) =>
-        OperationNode(
-            as_name(value),
-            as_value(value, OperationType.Query),
-            as_list(value)
-        )
-    );
+    return as_operation(super.operation());
   }
 
   Parser operationType() {
-    return super.operationType().map((value) {
-      switch(value) {
-        case 'mutation':
-          return PrimitiveNode(OperationType.Mutation);
-        case 'query':
-        default:
-          return PrimitiveNode(OperationType.Query);
-      }
+    return as_primitiveNode(super.operationType(), {
+      'mutation': OperationType.Mutation,
+      'query':OperationType.Query,
+      '':OperationType.Query,
     });
   }
 
 
   Parser field() {
-    return super.field().map((value) =>
-        FieldNode(
-            as_name(value),
-            as_list(value),
-            as_list(value),
-            as_list(value)
-        )
-    );
+    return as_fieldNode(super.field());
   }
 
   Parser fieldName() {
@@ -61,41 +41,23 @@ class GraphQLParserDefinition extends GraphQLGrammarDefinition with GrammarTrans
   }
 
   Parser argument() {
-    return super.argument().map((value) =>
-        ArgumentNode(
-          as_name(value),
-          as_value(value)
-        )
-    );
+    return as_argumentNode(super.argument());
   }
 
-
   Parser NAME() {
-    return super.NAME().trim().map(
-            (value)=>NameNode(value)
-    );
+    return as_nameNode(super.NAME());
   }
 
   Parser NUMBER() {
-    return super.NUMBER().trim().flatten().map((value) =>
-        PrimitiveNode(
-            int.parse(value)
-        )
-    );
+    return as_numberNode(super.NUMBER());
   }
 
   Parser STRING() {
-    return super.STRING().trim().flatten().map((value) =>
-        PrimitiveNode(
-            value
-        )
-    );
+    return as_stringNode(super.STRING());
   }
 
   Parser BOOLEAN() {
-    return super.STRING().trim().flatten().map((value) =>
-      value == "true" ? true : false
-    );
+    return as_booleanNode(super.STRING());
   }
 
 }

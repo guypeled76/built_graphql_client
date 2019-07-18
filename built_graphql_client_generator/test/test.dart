@@ -34,7 +34,7 @@ void main() {
 
     GraphQLParser parser = GraphQLParser();
 
-    var test1 = parser.parse("""mutation ggg {
+    var test1 = parser.parse("""mutation {
   currentUser {
     id,
     name
@@ -47,7 +47,7 @@ void main() {
     id,
     name
   }
-} query ddd { ggg(id:3) {id}}""");
+} query ddd { ggg(id:3, seatch:'test', by:\"name\") {id}}""");
 
   var value = test1.value;
   if(value is AstNode) {

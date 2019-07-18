@@ -10,7 +10,16 @@ abstract class GrammarBaseDefinition extends GrammarDefinition {
   }
 
   Parser STRING() {
-    return (ref(QUOTE) & (ref(pattern, "^\"") | ref(ESC)).star() & ref(QUOTE))
+    return ref(DOUBLE_QUOTE_STRING) | ref(SINGLE_QUOTE_STRING);
+  }
+
+  Parser DOUBLE_QUOTE_STRING() {
+    return (ref(DOUBLE_QUOTE) & (ref(pattern, "^\"") | ref(ESC)).star() & ref(DOUBLE_QUOTE))
+        .flatten();
+  }
+
+  Parser SINGLE_QUOTE_STRING() {
+    return (ref(SINGLE_QUOTE) & (ref(pattern, "^\'") | ref(ESC)).star() & ref(SINGLE_QUOTE))
         .flatten();
   }
 
@@ -105,7 +114,9 @@ abstract class GrammarBaseDefinition extends GrammarDefinition {
 
   Parser DOLLAR() => ref(token, "\$");
 
-  Parser QUOTE() => ref(token, "\"");
+  Parser DOUBLE_QUOTE() => ref(token, "\"");
+
+  Parser SINGLE_QUOTE() => ref(token, "\'");
 
   Parser EQUAL() => ref(token, "=");
 
