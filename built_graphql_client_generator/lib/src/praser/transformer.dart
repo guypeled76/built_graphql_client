@@ -70,7 +70,7 @@ class ParserTransformer {
     return parser.map((value) =>
         OperationNode(
             as_name(value),
-            as_value(value, OperationType.Query),
+            as_value_test(value, OperationType.Query),
             as_list(value)
         )
     );
@@ -92,6 +92,9 @@ class ParserTransformer {
     return items;
   }
 
+  ValueType as_value_test<ValueType>(Object value, [ValueType defaultValue]) {
+    return as_value(value, defaultValue);
+  }
   ValueType as_value<ValueType>(Object value, [ValueType defaultValue]) {
     if(value is ValueType) {
       return value;
@@ -128,6 +131,8 @@ class ParserTransformer {
         yield item;
       } else if (item is List) {
         yield* _items(item);
+      } else if(item is PrimitiveNode<ItemType>){
+        yield item.value;
       }
     }
   }
