@@ -15,11 +15,11 @@ class GraphqlGenerator extends GeneratorForAnnotation<GraphqlQuery> {
     return "// Hey! Annotation found!";
   }
 
-  String generateCommand(String className, String query, AstNode schema) {
+  String generateCommand(String className, String query, String schema) {
 
-    GraphQLParser parser = GraphQLParser();
+    GraphQLParser parser = GraphQLParser(schema);
 
-    return generateCommandCode(parser.parseToAstWithSchemaAst(query, schema));
+    return generateCommandCode(parser.parseToAst(query));
   }
 
   String generateCommandCode(AstNode query) {
