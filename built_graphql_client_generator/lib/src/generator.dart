@@ -6,7 +6,7 @@ import 'package:source_gen/source_gen.dart';
 
 import 'package:built_graphql_client/built_graphql_client.dart';
 
-class GraphqlGenerator extends GeneratorForAnnotation<GraphqlQuery> {
+class GraphQLGenerator extends GeneratorForAnnotation<GraphQLQuery> {
   @override
   FutureOr<String> generateForAnnotatedElement(
       Element element, ConstantReader annotation, BuildStep buildStep) {
@@ -15,15 +15,7 @@ class GraphqlGenerator extends GeneratorForAnnotation<GraphqlQuery> {
     return "// Hey! Annotation found!";
   }
 
-  String generateCommand(String className, String query, String schema) {
-
-    GraphQLParser parser = GraphQLParser(schema);
-
-    return generateCommandCode(parser.parseToAst(query));
-  }
-
-  String generateCommandCode(AstNode query) {
-    // query.children.whereType<TypeDefinition>();
-    return "d";
+  String generateCommand(String className, GraphQLQuery query) {
+    return GraphQLClient(GraphQLClientConfig(query.schema, className)).queryToDart(query.query);
   }
 }
